@@ -1,16 +1,16 @@
 {
   "name": "http2-push-manifest",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generate a list of static resources for http2 push and preload.",
-  "homepage": "https://github.com/GoogleChrome/http2-push-manifest",
-  "author": "Eric Bidelman <ebidel@>",
+  "homepage": "https://github.com/DoubleChins/http2-push-manifest",
+  "author": "Fabian Faßbender <fabian.fassbender42@gmail.com>",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GoogleChrome/http2-push-manifest"
+    "url": "https://github.com/DoubleChins/http2-push-manifest"
   },
   "bugs": {
-    "url": "https://github.com/GoogleChrome/http2-push-manifest/issues"
+    "url": "https://github.com/DoubleChins/http2-push-manifest/issues"
   },
   "keywords": [
     "http2",
@@ -22,7 +22,7 @@
     "http2-push-manifest": "bin/http2-push-manifest"
   },
   "engines": {
-    "node": ">=4.0"
+    "node": ">=11.0"
   },
   "scripts": {
     "lint": "jshint --verbose lib",
