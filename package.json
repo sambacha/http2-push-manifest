@@ -26,17 +26,17 @@
   },
   "scripts": {
     "lint": "jshint --verbose lib",
-    "test": "npm run lint; mocha"
+    "test": "mocha"
   },
   "dependencies": {
-    "dom5": "^1.1.1",
-    "hydrolysis": "1.22.0",
-    "nopt": "^3.0.4",
-    "vulcanize": "^1.13.1"
+    "dom5": "^3.0.1",
+    "polymer-analyzer": "^3.2.4",
+    "nopt": "^4.0.3",
+    "vulcanize": "^1.16.0"
   },
   "devDependencies": {
-    "jshint": "^2.8.0",
-    "mocha": "^2.3.3"
+    "jshint": "^2.11.1",
+    "mocha": "^7.2.0"
   },
   "optionalDependencies": {
     "update-notifier": "^0.5.0"

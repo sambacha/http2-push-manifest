@@ -125,7 +125,7 @@ function generateManifest(manifestName, files, singleFile) {
     f = `.${path.sep}${f}`;
   }
 
-  let basePath = f.slice(0, f.lastIndexOf(path.sep))
+  let basePath = f.slice(0, f.lastIndexOf(path.sep));
   let inputPath = f.slice(f.lastIndexOf(path.sep) + 1);
 
   if (!basePath || !inputPath) {

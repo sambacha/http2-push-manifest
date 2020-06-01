@@ -63,12 +63,12 @@ suite('manifest.js', () => {
   });
 
   test('defaults', done => {
-    assert.equal(manifest.DEFAULT_MANIFEST_NAME,
+    assert.strictEqual(manifest.DEFAULT_MANIFEST_NAME,
                  'push_manifest.json', 'default manifest file name');
-    assert.equal(manifest.name, manifest.DEFAULT_MANIFEST_NAME,
+    assert.strictEqual(manifest.name, manifest.DEFAULT_MANIFEST_NAME,
                  'default manifest file set');
-    assert.equal(manifest.basePath, BASE, 'basePath set');
-    assert.equal(manifest.inputPath, INPUT, 'default inputPath set');
+    assert.strictEqual(manifest.basePath, BASE, 'basePath set');
+    assert.strictEqual(manifest.inputPath, INPUT, 'default inputPath set');
     done();
   });
 
@@ -78,7 +78,7 @@ suite('manifest.js', () => {
       let name = manifest.DEFAULT_MANIFEST_NAME;
       let urls = Object.keys(EXPECTED_FILE);
 
-      assert.equal(output.urls.length, urls.length, 'found all resources');
+      assert.strictEqual(output.urls.length, urls.length, 'found all resources');
 
       fs.readFile(name, (err, data) => {
         if (err) {
@@ -87,7 +87,7 @@ suite('manifest.js', () => {
 
         var json = JSON.parse(data);
 
-        assert.equal(JSON.stringify(json), JSON.stringify(output.file),
+        assert.strictEqual(JSON.stringify(json), JSON.stringify(output.file),
                      'Written file does not match .file property');
 
 
@@ -96,15 +96,15 @@ suite('manifest.js', () => {
         assert(EXPECTED_FILE['/api/endpoint'], 'url without file extension is included');
 
         // Node 4.2.1 doesn't support ...[] yet. Built ourself.
-        let arr = urls.concat(Object.keys(json));
+        let arr = [].concat(Object.keys(json));
         let union = new Set(arr);
-        assert.equal(union.size, urls.length, 'all resources written to file');
+        assert.strictEqual(union.size, urls.length, 'all resources written to file');
 
         // Node 4.2.1 doesn't support for...of
         for (let key in json) {
           assert('type' in json[key], '.type property exists for all urls');
           if (key === '/api/endpoint') {
-            assert.equal(json[key].type, '', '.type is empty for urls without file extensions');
+            assert.strictEqual(json[key].type, '', '.type is empty for urls without file extensions');
           }
         }
 
@@ -125,7 +125,7 @@ suite('manifest.js', () => {
       basePath: BASE, inputPath: INPUT, name: name
     });
 
-    assert.equal(manifest.name, name, 'custom manifest file name set');
+    assert.strictEqual(manifest.name, name, 'custom manifest file name set');
 
     listresources(manifest).then(output => {
       assert(fs.statSync(name).isFile(), 'custom manifest written');
@@ -140,9 +140,9 @@ suite('manifest.js', () => {
 suite('cli', () => {
   var exec = require('child_process').exec;
 
-  let CMD =  `${__dirname}/../bin/http2-push-manifest`;
-  let INPUT = `${__dirname}/html/basic.html`;
-  let INPUT2 = `${__dirname}/html/basic2.html`;
+  let CMD =  `node ${__dirname}${path.sep}..${path.sep}bin${path.sep}http2-push-manifest`;
+  let INPUT = `${__dirname}${path.sep}html${path.sep}basic.html`;
+  let INPUT2 = `${__dirname}${path.sep}html${path.sep}basic2.html`;
   let NAME = 'push_manifest.json';
 
   function process(cmd, cb) {
